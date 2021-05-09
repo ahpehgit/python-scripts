@@ -1,0 +1,36 @@
+{%extends "layout.html"%}
+{%block content%}
+<div class="file_upload">
+    <h1>File upload</h1>
+    <p>This is a file upload site that checks the checksum of the uploaded file</p>
+</div>
+<form method=post enctype=multipart/form-data>
+    <p>
+        Checksum:
+        <input type=text name=text>
+        <p>
+        <input type=file name=file>
+        <input type=submit name=action value=Upload>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% if checksum %}
+    Checksum is {{checksum | safe}} <br>
+{% endif %}
+{% if filename %}
+    Filename is {{filename | safe}} <br>
+{% endif %}
+{% if result %}
+    Result is {{result | safe}}
+{% endif %}
+
+{%endblock%}

@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+{%block content%}
+<link rel="stylesheet" href={{cdn_css | safe}} type="text/css" />
+<script type="text/javascript" src={{cdn_js | safe}}></script>
+
+<div class="about">
+    <h1>My candlestick page</h1>
+    <p>This is a test website showing financial candlestick chart</p>
+</div>
+<form method="get" style="margin-top:10px">
+	<input type="text" name="symbol" required />
+	<button type="submit">Go</button>
+</form>
+
+<!-- Chart datas -->
+{{charts | safe}}
+
+<!-- Container to embed the chart data -->
+{{containers | safe}}
+
+<h3>{{message | safe}}</h3>
+
+{%endblock%}
